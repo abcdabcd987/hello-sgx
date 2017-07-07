@@ -1,0 +1,10 @@
+enclave {
+    trusted {
+        public void get_greeting_string([in, string] const char *name, 
+                                        [out, size=len] char *greeting,
+                                        size_t len);
+    };
+    untrusted {
+        uint64_t get_magic_number([in, string] const char *name);
+    };
+};
