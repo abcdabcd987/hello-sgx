@@ -2,7 +2,7 @@
 
     openssl genrsa -out Enclave/Enclave_private.pem -3 3072
     make
-    ./app <name>
+    ./memory-overhead
 
 Actually, there are many different build mode supported by this makefile:
 

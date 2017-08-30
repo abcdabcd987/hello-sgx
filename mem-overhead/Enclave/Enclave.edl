@@ -5,6 +5,7 @@ enclave {
         public void trusted_read(uint32_t offset, [out, size=len] uint8_t *out, size_t len);
         public void trusted_write(uint32_t offset, [in, size=len] uint8_t *in, size_t len);
     };
+
     untrusted {
         void ocall_puts([in, string] const char *str);
     };

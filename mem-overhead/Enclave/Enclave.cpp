@@ -1,20 +1,30 @@
 #include <cstdio>
 #include <cstring>
 #include <chrono>
+
 #include "sgx_trts.h"
 #include "Enclave_t.h"
 
 uint8_t *g_enclave_memory;
 
-void trusted_malloc(size_t len) {
+void trusted_malloc(size_t len)
+{
     if (g_enclave_memory != nullptr)
         ocall_puts("trusted_malloc: g_enclave_memory is not nullptr before malloc");
+
     g_enclave_memory = new uint8_t[len];
+
+    for(size_t i = 0; i < len; ++i)
+    {
+        g_enclave_memory[i] = static_cast<uint8_t>(i % 255);
+    }
+
     if (g_enclave_memory == nullptr)
         ocall_puts("trusted_malloc: g_enclave_memory is still nullptr after malloc");
 }
 
-void trusted_free() {
+void trusted_free()
+{
     delete [] g_enclave_memory;
     g_enclave_memory = 0;
 }
