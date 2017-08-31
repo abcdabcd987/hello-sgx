@@ -2,6 +2,7 @@
 *_t.[ch]
 *.pem
 app
+memory-overhead
 .config_*
 
 # Created by https://www.gitignore.io/api/c,vim,c++,macos,intellij+all
